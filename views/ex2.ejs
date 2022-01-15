@@ -1,28 +1,38 @@
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EX2  - Pegar extrato</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style.css">
+  <title>EX 2 - TROCO</title>
 </head>
 <body>
-     <form action="./ex2" method="post">
-         <input name="compra" type=number placeholder="digite o valor da compra" required>
-         <input name="dinheiro" type=number placeholder="digite o dinheiro recebido" required>
-         <button type="submit">pegar extrato</button>
-     </form>
-     <div>
-        <% if (extrato != undefined) { %>
-            <div>
-                <p>Valor da compra: <%=  extrato.valorCompra %></p>
-                <p>Valor pago em dinheiro: <%=  extrato.valorDinheiro %></p>
-                <p>Troco: <%=  extrato.valorTroco %></p>
-                <p>numero de notas de 100:  <%=  extrato.notas100 %></p>
-                <p>numero de notas de 10:  <%=  extrato.notas10 %></p>
-                <p>numero de notas de 1:  <%=  extrato.notas1 %></p>
-                <p>numero minino de notas usadas:  <%=  extrato.numeroDeNotas %></p>
-            </div>
-        <% } %>
-     </div>
+
+
+  <div class="container">
+    <div class="card">
+        <form action="./ex2" method="post">
+            <input name="compra" type="number" placeholder="valor da compra" min="0">
+            <input name="dinheiro" type="number" placeholder="dinheiro dado" min="0">
+            <button type="submit">Calcular Troco</button>
+            
+        </form>
+        <div>
+          <% if (extrato != undefined) { %>
+              <div>
+                  <p>Valor da compra: <%=  extrato.valorCompra %></p>
+                  <p>Valor pago em dinheiro: <%=  extrato.valorDinheiro %></p>
+                  <p>Troco: <%=  extrato.valorTroco %></p>
+                  <p>numero de notas de 100:  <%=  extrato.notas100 %></p>
+                  <p>numero de notas de 10:  <%=  extrato.notas10 %></p>
+                  <p>numero de notas de 1:  <%=  extrato.notas1 %></p>
+                  <p>numero minino de notas usadas:  <%=  extrato.numeroDeNotas %></p>
+              </div>
+          <% } %>
+       </div>
+    </div>
+</div>  
+  
 </body>
 </html>
