@@ -10,6 +10,7 @@
 }
 
 body {
+    min-height: 100vh;
     background: rgb(8, 84, 103);
     background: linear-gradient(175deg, rgba(8, 84, 103, 1) 9%, rgba(175, 167, 187, 1) 71%, rgba(244, 192, 179, 1) 100%);
     background-size: cover;
