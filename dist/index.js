@@ -20,6 +20,10 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(express.static(path.resolve(__dirname, '..') + '/public'));
 
+app.get("/ex4", (req, res) => {
+    res.render(basePath + '/ex4');
+})
+
 app.get("/ex3", (req, res) => {
     res.render(basePath + '/ex3', { cadastrado: false });
 })
