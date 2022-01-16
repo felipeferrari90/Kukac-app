@@ -13,7 +13,7 @@
 
 
     <div class="container">
-        <div class="card">
+        <div class="card flexcolumn">
             <form action="./ex3" method="post">
 
                 <select name="veiculo" id="veiculo" onchange="Javascript: changeVeiculo(this.value);" onload="Javascript: changeVeiculo('carro');">
@@ -35,7 +35,7 @@
                         <div><input type="radio" id="quatro" name="portas" value="4">
                             <label for="quatro">4</label></div>
                     </div>
-              
+
 
                 </div>
 
@@ -51,12 +51,13 @@
 
                 <button type="submit">Cadastrar</button>
             </form>
+            <% if (cadastrado) { %>
+                <h2>
+                    <%= "Dados salvos com sucesso!" %>
+                </h2>
+                <% } %>
         </div>
-        <% if (cadastrado) { %>
-            <h2>
-                <%= "dados salvos com sucesso" %>
-            </h2>
-            <% } %>
+
     </div>
     <script>
         function changeVeiculo(value) {
