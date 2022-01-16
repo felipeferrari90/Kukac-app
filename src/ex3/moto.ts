@@ -24,18 +24,19 @@ export class Moto implements Veiculo{
         this.rodas
     };
 
-    public addToJson(json:string):string{
-       let veiculosCadastrados = JSON.parse(json)['veiculosCadastrados'];
-       veiculosCadastrados.push(
-         {
-              'modelo': this.modelo,
-              'ano' : this.anoDeFabricacao,
-              'portas' : this.quantidadeDePortas,
-              'marca' : this.marca,
-              'passageiros' : this.passageiros,
-              'rodas' : this.rodas
-         }
-       );
-       return JSON.stringify(veiculosCadastrados)
+    public addToJson():any{
+        let map =  new Map<string, any>();
+        map.set("modelo",this.modelo)
+        map.set("anoDeFabricacao",this.anoDeFabricacao)
+        map.set("quantidadeDePorta",this.quantidadeDePortas)
+        map.set("marca",this.marca)
+        map.set("passageiros",this.passageiros)
+        map.set("rodas",this.rodas)
+        let jsonObject = {};
+
+        map.forEach((value, key) => {  
+            jsonObject[key] = value  
+        });  
+        return jsonObject;
     }
 }

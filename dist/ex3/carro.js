@@ -10,15 +10,17 @@ class Carro {
         this.marca = marca;
     }
     ;
-    addToJson(json) {
-        let veiculosCadastrados = JSON.parse(json)['veiculosCadastrados'];
-        veiculosCadastrados.push({
-            'modelo': this.modelo,
-            'ano': this.anoDeFabricacao,
-            'portas': this.quantidadeDePortas,
-            'marca': this.marca,
+    addToJson() {
+        let map = new Map();
+        map.set("modelo", this.modelo);
+        map.set("anoDeFabricacao", this.anoDeFabricacao);
+        map.set("quantidadeDePorta", this.quantidadeDePortas);
+        map.set("marca", this.marca);
+        let jsonObject = {};
+        map.forEach((value, key) => {
+            jsonObject[key] = value;
         });
-        return JSON.stringify(veiculosCadastrados);
+        return jsonObject;
     }
 }
 exports.Carro = Carro;

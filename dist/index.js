@@ -1,6 +1,7 @@
 const express = require('express')
 const path = require('path');
 const bodyParser = require('body-parser')
+const fs = require('fs')
 const { getPalindromeBetweenNumbers } = require('./ex1/palindromo');
 const { pegarExtrato } = require('./ex2/caixa');
 const { Carro , Moto } = require('./ex3/index');
@@ -8,7 +9,7 @@ const storage = require('../repository/veiculosCadastrados.json')
 
 const app = express()
 
-const port = 3002
+const port = 3002;
 
 const basePath = path.join(path.resolve(__dirname, '..'),'views');
 
@@ -26,23 +27,35 @@ app.get("/ex3",(req, res) => {
 })
 
 app.post("/ex3",(req, res) => {
-    let veiculo = req.params.veiculo
-    let marca = req.params.marca
-    let ano = +req.params.ano
-    let quantidadeDePortas = +req.params.portas
-    switch (req.params.veiculo) {
+
+    let marca = req.body.marca
+    let modelo = req.body.modelo
+    let ano = +req.body.ano
+    let quantidadeDePortas = +req.body.portas
+    console.log(req.body.veiculo)
+    switch (req.body.veiculo) {
         case 'carro':
-            let carro = new Carro()
+            console.log("chegou carro")
+            let carro = new Carro(modelo, ano,quantidadeDePortas, marca)
+            storage.veiculosCadastrados.push(carro.addToJson())
             break;
         case 'moto':
-            
+            console.log("chegou moto")
+            let passageiros = req.params.passageiros | 1;
+            let moto = new Moto(modelo, ano,quantidadeDePortas, marca,passageiros)
+            storage.veiculosCadastrados.push(moto.addToJson())
             break;
         default:
             break;
     }
+    
+    console.log(storage)
+    console.log(storage.veiculosCadastrados)
+    console.log(path.resolve(__dirname,'..')+'/repository/veiculosCadastrados.json');
 
-    let extrato = JSON.parse(pegarExtrato(valorCompra, valorDinheiro))
-    res.render(basePath+'/ex3',{cadastrado:true});
+    fs.writeFileSync(path.resolve(__dirname,'..')+'/repository/veiculosCadastrados.json',JSON.stringify(storage),{encoding:'utf8',flag:'w'})
+    res.render(basePath+'/ex3',{cadastrado: true})
+    
 })
 
 app.get("/ex2",(req, res) => {

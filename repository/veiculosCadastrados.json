@@ -1,3 +1,1 @@
-{
-    "veiculosCadastrados" : []
-}
+{"veiculosCadastrados":[{"modelo":"sedan","anoDeFabricacao":1999,"quantidadeDePorta":2,"marca":"corsa"},{"modelo":"cruise","anoDeFabricacao":2000,"quantidadeDePorta":4,"marca":"renault"},{"modelo":"sedan","anoDeFabricacao":1999,"quantidadeDePorta":4,"marca":"diego"}]}
