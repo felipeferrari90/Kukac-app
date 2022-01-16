@@ -67,6 +67,7 @@ a {
 .flexcolumn {
     display: flex;
     flex-direction: column;
+    
 }
 
 .container {
@@ -133,6 +134,7 @@ select {
     display: flex;
     justify-content: center;
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
 }
 

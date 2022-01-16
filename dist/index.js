@@ -6,10 +6,12 @@ const { getPalindromeBetweenNumbers } = require('./ex1/palindromo');
 const { pegarExtrato } = require('./ex2/caixa');
 const { Carro, Moto } = require('./ex3/index');
 const storage = require('../repository/veiculosCadastrados.json')
+const { getCep } = require('./ex4/cep');
+const { listenerCount } = require('process');
 
 const app = express()
 
-const port = 3002;
+const port = 3003;
 
 const basePath = path.join(path.resolve(__dirname, '..'), 'views');
 
@@ -20,8 +22,24 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(express.static(path.resolve(__dirname, '..') + '/public'));
 
+
+
+app.post("/ex4", (req, res) => {
+    let resultCep;
+    getCep(req.body.cep1).then(
+        (response) => {
+            resultCep = response
+            console.log(response)
+            res.render(basePath + '/ex4', {resultCep : resultCep});
+        }
+    ).catch((err) => {
+        res.render(basePath + '/ex4', {resultCep : 'deuErro'+err});
+    });
+    console.log(resultCep)
+})
+
 app.get("/ex4", (req, res) => {
-    res.render(basePath + '/ex4');
+    res.render(basePath + '/ex4' ,{resultCep : null});
 })
 
 app.get("/ex3", (req, res) => {
@@ -74,7 +92,7 @@ app.post("/ex2", (req, res) => {
 })
 
 app.get("/ex1", (req, res) => {
-    res.render(basePath + '/ex1', { resultados: [] });
+    res.render(basePath + '/ex1',  {resultados : null});
 })
 
 app.post("/ex1", (req, res) => {
