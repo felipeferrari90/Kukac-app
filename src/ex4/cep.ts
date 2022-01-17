@@ -4,8 +4,8 @@ export async function getCep(cep:string): Promise<string | void>{
     await axios.get(`https://viacep.com.br/ws/${cep}/json/`).then(
        (response:AxiosResponse) => {
         stringResponse = `
-         o cep ${cep} encontra-se na ${response.data['logradouro']},
-         Bairro: ${response.data['bairro']}, Cidade:${response.data['localidade']}/${response.data['uf']} 
+         O CEP ${cep} encontra-se na ${response.data['logradouro']}, \n
+         Bairro: ${response.data['bairro']}, \nCidade:${response.data['localidade']}/${response.data['uf']} 
          
          `
        }
