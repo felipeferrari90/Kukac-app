@@ -60,11 +60,6 @@ h1:hover {
     font-size: small;
 }
 
-
-/* .quebra {
-    width: content;
-} */
-
 a {
     text-decoration: none;
 }
@@ -87,6 +82,13 @@ a {
     padding: 20px;
     display: flex;
     justify-content: center;
+}
+
+.text_right {
+    text-align: right;
+}
+
+.mincontent {
     width: min-content;
 }
 
