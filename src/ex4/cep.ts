@@ -5,8 +5,7 @@ export async function getCep(cep:string, index:number): Promise<string | void>{
        (response:AxiosResponse) => {
         stringResponse = ` 
          o cep numero ${index}: ${cep} encontra-se na ${response.data['logradouro']},
-         Bairro: ${response.data['bairro']}, Cidade:${response.data['localidade']}/${response.data['uf']} 
-         
+         Bairro: ${response.data['bairro']}, Cidade:${response.data['localidade']}/${response.data['uf']}  
          `
        }
     ).catch(

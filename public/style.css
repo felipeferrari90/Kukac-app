@@ -67,7 +67,6 @@ a {
 .flexcolumn {
     display: flex;
     flex-direction: column;
-    
 }
 
 .container {
@@ -83,6 +82,14 @@ a {
     padding: 20px;
     display: flex;
     justify-content: center;
+}
+
+.text_right {
+    text-align: right;
+}
+
+.mincontent {
+    width: min-content;
 }
 
 form {
