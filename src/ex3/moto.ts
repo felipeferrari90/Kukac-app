@@ -6,7 +6,7 @@ export class Moto implements Veiculo{
     anoDeFabricacao: number;
     quantidadeDePortas:number = 0;
     marca: string;
-    passageiros:number;
+    passageiros:number= 1 | 2;
     rodas:number = 2
 
 

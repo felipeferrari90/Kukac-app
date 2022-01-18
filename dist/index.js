@@ -11,7 +11,7 @@ const { listenerCount } = require('process');
 
 const app = express()
 
-const port = 3003;
+const port = 3000;
 
 const basePath = path.join(path.resolve(__dirname, '..'), 'views');
 
