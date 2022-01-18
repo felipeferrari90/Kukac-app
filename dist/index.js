@@ -25,18 +25,23 @@ app.use(express.static(path.resolve(__dirname, '..') + '/public'));
 
 
 app.post("/ex4", (req, res) => {
-    let resultCep;
-    getCep(req.body.cep1).then(
-        (response) => {
-            resultCep = response
-            console.log(response)
-            res.render(basePath + '/ex4', {resultCep : resultCep});
-        }
-    ).catch((err) => {
-        res.render(basePath + '/ex4', {resultCep : 'deuErro'+err});
-    });
-    console.log(resultCep)
-})
+    let ceps = [req.body.cep1,req.body.cep2,req.body.cep3,req.body.cep4,req.body.cep5];
+    let responses = []
+    ceps.forEach((element, index)=>{
+        let currentResponse =  getCep(element, index+1)  
+        .catch((err) => { return `erro na solicitacao: ${err}`;});
+        console.log(currentResponse)
+        responses.push(currentResponse)
+    })
+    Promise.all([responses[0], responses[1],responses[2],responses[3],responses[4]]).then(
+         (values) => { 
+             console.log("chegou aqui");
+             console.log(values);
+             res.render(basePath + '/ex4' ,{resultCep : values});
+         }
+    )
+    
+});
 
 app.get("/ex4", (req, res) => {
     res.render(basePath + '/ex4' ,{resultCep : null});
