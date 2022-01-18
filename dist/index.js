@@ -25,26 +25,26 @@ app.use(express.static(path.resolve(__dirname, '..') + '/public'));
 
 
 app.post("/ex4", (req, res) => {
-    let ceps = [req.body.cep1,req.body.cep2,req.body.cep3,req.body.cep4,req.body.cep5];
+    let ceps = [req.body.cep1, req.body.cep2, req.body.cep3, req.body.cep4, req.body.cep5];
     let responses = []
-    ceps.forEach((element, index)=>{
-        let currentResponse =  getCep(element, index+1)  
-        .catch((err) => { return `erro na solicitacao: ${err}`;});
+    ceps.forEach((element, index) => {
+        let currentResponse = getCep(element, index + 1)
+            .catch((err) => { return `erro na solicitacao: ${err}`; });
         console.log(currentResponse)
         responses.push(currentResponse)
     })
-    Promise.all([responses[0], responses[1],responses[2],responses[3],responses[4]]).then(
-         (values) => { 
-             console.log("chegou aqui");
-             console.log(values);
-             res.render(basePath + '/ex4' ,{resultCep : values});
-         }
+    Promise.all([responses[0], responses[1], responses[2], responses[3], responses[4]]).then(
+        (values) => {
+            console.log("chegou aqui");
+            console.log(values);
+            res.render(basePath + '/ex4', { resultCep: values });
+        }
     )
-    
+
 });
 
 app.get("/ex4", (req, res) => {
-    res.render(basePath + '/ex4' ,{resultCep : null});
+    res.render(basePath + '/ex4', { resultCep: null });
 })
 
 app.get("/ex3", (req, res) => {
@@ -52,7 +52,7 @@ app.get("/ex3", (req, res) => {
 })
 
 
-app.post("/ex3",(req, res) => {
+app.post("/ex3", (req, res) => {
 
     let marca = req.body.marca
     let modelo = req.body.modelo
@@ -63,25 +63,25 @@ app.post("/ex3",(req, res) => {
 
         case 'carro':
             console.log("chegou carro")
-            let carro = new Carro(modelo, ano,quantidadeDePortas, marca)
+            let carro = new Carro(modelo, ano, quantidadeDePortas, marca)
             storage.veiculosCadastrados.push(carro.addToJson())
             break;
         case 'moto':
             console.log("chegou moto")
             let passageiros = req.params.passageiros | 1;
-            let moto = new Moto(modelo, ano,quantidadeDePortas, marca,passageiros)
+            let moto = new Moto(modelo, ano, quantidadeDePortas, marca, passageiros)
             storage.veiculosCadastrados.push(moto.addToJson())
             break;
         default:
             break;
     }
-    
+
     console.log(storage)
     console.log(storage.veiculosCadastrados)
-    console.log(path.resolve(__dirname,'..')+'/repository/veiculosCadastrados.json');
-    fs.writeFileSync(path.resolve(__dirname,'..')+'/repository/veiculosCadastrados.json',JSON.stringify(storage),{encoding:'utf8',flag:'w'})
-    res.render(basePath+'/ex3',{cadastrado: true})
-    
+    console.log(path.resolve(__dirname, '..') + '/repository/veiculosCadastrados.json');
+    fs.writeFileSync(path.resolve(__dirname, '..') + '/repository/veiculosCadastrados.json', JSON.stringify(storage), { encoding: 'utf8', flag: 'w' })
+    res.render(basePath + '/ex3', { cadastrado: true })
+
 
 })
 
@@ -97,7 +97,7 @@ app.post("/ex2", (req, res) => {
 })
 
 app.get("/ex1", (req, res) => {
-    res.render(basePath + '/ex1',  {resultados : null});
+    res.render(basePath + '/ex1', { resultados: null });
 })
 
 app.post("/ex1", (req, res) => {
@@ -112,5 +112,5 @@ app.get("/", (req, res) => {
 })
 
 app.listen(port, () => {
-    "servidor rodando na porta" + port;
+    console.log("Servidor rodando na porta " + port);
 })

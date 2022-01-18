@@ -11,22 +11,24 @@
 
 <body>
 
-  <div class="container">
-    <div class="card">
-        <form action="./ex4" method="post">
-            <input name="cep1" type="number" placeholder="CEP 1" required>
-            <input name="cep2" type="number" placeholder="CEP 2" required>
-            <input name="cep3" type="number" placeholder="CEP 3" required>
-            <input name="cep4" type="number" placeholder="CEP 4" required>
-            <input name="cep5" type="number" placeholder="CEP 5" required>
-            <button type="submit">Buscar CEP</button>
-        </form>
-        <% if (resultCep) { %>
-          <% for(var i = 0; i < resultCep.length; i++) { %>
-            <p><%= resultCep[i] %></p>
-          <% } %>
-        <% } %>  
-    </div>
+    <div class="container">
+        <div class="card flexcolumn mincontent">
+            <form action="./ex4" method="post">
+                <input name="cep1" type="number" placeholder="CEP 1" required>
+                <input name="cep2" type="number" placeholder="CEP 2" required>
+                <input name="cep3" type="number" placeholder="CEP 3" required>
+                <input name="cep4" type="number" placeholder="CEP 4" required>
+                <input name="cep5" type="number" placeholder="CEP 5" required>
+                <button type="submit">Buscar CEP</button>
+            </form>
+            <% if (resultCep) { %>
+                <% for(var i = 0; i < resultCep.length; i++) { %>
+                    <p>
+                        <%= resultCep[i] %>
+                    </p>
+                    <% } %>
+                        <% } %>
+        </div>
 
 </body>
 

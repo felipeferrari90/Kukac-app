@@ -6,7 +6,7 @@ export class Moto implements Veiculo{
     anoDeFabricacao: number;
     quantidadeDePortas:number = 0;
     marca: string;
-    passageiros:number = 1 | 2;
+    passageiros:number;
     rodas:number = 2
 
 
@@ -15,12 +15,13 @@ export class Moto implements Veiculo{
         anoDeFabricacao: number,
         quantidadeDePortas:number,
         marca: string,
+        passageiros: number,
     ){
         this.modelo = modelo;
         this.anoDeFabricacao = anoDeFabricacao ;
         this.quantidadeDePortas = quantidadeDePortas ;
         this.marca = marca;
-        this.passageiros;
+        this.passageiros = passageiros;
         this.rodas
     };
 
