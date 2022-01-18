@@ -68,7 +68,7 @@ app.post("/ex3", (req, res) => {
             break;
         case 'moto':
             console.log("chegou moto")
-            let passageiros = req.params.passageiros | 1;
+            let passageiros = +req.body.passageiros;
             let moto = new Moto(modelo, ano, quantidadeDePortas, marca, passageiros)
             storage.veiculosCadastrados.push(moto.addToJson())
             break;
