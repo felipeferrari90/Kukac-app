@@ -89,7 +89,7 @@ out
 
 # Nuxt.js build / generate output
 .nuxt
-!dist/index.js
+
 
 # Gatsby files
 .cache/
@@ -129,6 +129,8 @@ out
 .yarn/install-state.gz
 .pnp.*
 
-
+# my permissions
 *~
 ~/.vscode-root
+!dist/index.js
+dist/ex[0-9]
